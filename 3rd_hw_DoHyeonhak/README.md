@@ -3,11 +3,11 @@
 
 ## HW3 Netflix
 
-<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/2nd_hw_DoHyeonHak/hw2.png">
+<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/3rd_hw_DoHyeonhak/hw3-1.png">
 
-<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/2nd_hw_DoHyeonHak/hw2.png">
+<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/3rd_hw_DoHyeonhak/hw3-2.png">
 
-<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/2nd_hw_DoHyeonHak/hw2.png">
+<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/3rd_hw_DoHyeonhak/hw3-3.png">
 
 - hw3 과제에 대한 결과입니다.
 - FirstViewController에 Home page를 제작하였습니다. 
