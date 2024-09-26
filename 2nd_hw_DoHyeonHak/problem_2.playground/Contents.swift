@@ -37,7 +37,7 @@ func printPositiveNumber(_ number: Int) {
     }
     print(number)
 }
-//printPositiveNumber(5)  // 5를 출력해야 함
+printPositiveNumber(5)  // 5를 출력해야 함
 printPositiveNumber(-3) // "The number is not positive." 출력해야 함
 
 
