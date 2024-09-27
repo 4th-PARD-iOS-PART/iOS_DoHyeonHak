@@ -15,9 +15,10 @@ class FirstViewController: UIViewController {
     ]
     
     let tableView: UITableView = {
-        let table = UITableView()
+        let table = UITableView(frame: .zero, style: .grouped)
         table.backgroundColor = .clear
         table.translatesAutoresizingMaskIntoConstraints = false
+
 
         return table
     }()
@@ -25,7 +26,7 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        
+        navigationController?.setNavigationBarHidden(true, animated: false) // 네비게이션바 숨기기
         view.addSubview(tableView)
         
         tableView.dataSource = self
@@ -57,7 +58,7 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        // section이 0인건 로고 포함된 버튼 모음이고, 나머지는 영화 모음
         if indexPath.section == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as? HomeTableViewController else {
                 return UITableViewCell()
@@ -96,15 +97,16 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 380
+            return 430
         }
         return 130
     }
+    // 헤더 높이
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0
         }
-        return 50 // 헤더 높이
+        return 50
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
