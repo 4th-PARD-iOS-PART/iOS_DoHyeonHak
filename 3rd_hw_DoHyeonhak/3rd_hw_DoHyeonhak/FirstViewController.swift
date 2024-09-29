@@ -50,7 +50,7 @@ class FirstViewController: UIViewController {
 
 extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return titleSection.count + 1 // 6개의 섹션을 표시
+        return titleSection.count + 1 // 7개의 섹션을 표시
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

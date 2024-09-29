@@ -19,6 +19,9 @@
 		5F32A6CC2CA3176900D5E45D /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32A6CB2CA3176900D5E45D /* DownloadViewController.swift */; };
 		5F32A6D02CA3178B00D5E45D /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32A6CF2CA3178B00D5E45D /* MoreViewController.swift */; };
 		5F32A6D42CA31CD700D5E45D /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32A6D32CA31CD700D5E45D /* MockData.swift */; };
+		5F5D65A42CA99BF900B92E82 /* SearchCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D65A32CA99BF400B92E82 /* SearchCustomCell.swift */; };
+		5F5D65A62CA99C3500B92E82 /* SearchMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D65A52CA99C2F00B92E82 /* SearchMockData.swift */; };
+		5F5D65A82CA9AFA900B92E82 /* SearchBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D65A72CA9AF8700B92E82 /* SearchBarTableViewCell.swift */; };
 		5FFC0DF82CA57D32003A0099 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC0DF72CA57D32003A0099 /* CustomCell.swift */; };
 		5FFC0DFA2CA5B133003A0099 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC0DF92CA5B133003A0099 /* CollectionViewController.swift */; };
 		5FFC0DFC2CA5D186003A0099 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC0DFB2CA5D186003A0099 /* HomeTableViewController.swift */; };
@@ -39,6 +42,9 @@
 		5F32A6CB2CA3176900D5E45D /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		5F32A6CF2CA3178B00D5E45D /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		5F32A6D32CA31CD700D5E45D /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		5F5D65A32CA99BF400B92E82 /* SearchCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCustomCell.swift; sourceTree = "<group>"; };
+		5F5D65A52CA99C2F00B92E82 /* SearchMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMockData.swift; sourceTree = "<group>"; };
+		5F5D65A72CA9AF8700B92E82 /* SearchBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTableViewCell.swift; sourceTree = "<group>"; };
 		5FFC0DF72CA57D32003A0099 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		5FFC0DF92CA5B133003A0099 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		5FFC0DFB2CA5D186003A0099 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
@@ -85,10 +91,13 @@
 				5FFC0DFB2CA5D186003A0099 /* HomeTableViewController.swift */,
 				5F32A6C52CA30BEE00D5E45D /* FirstViewController.swift */,
 				5F32A6C72CA3172D00D5E45D /* SearchViewController.swift */,
+				5F5D65A32CA99BF400B92E82 /* SearchCustomCell.swift */,
+				5F5D65A72CA9AF8700B92E82 /* SearchBarTableViewCell.swift */,
 				5F32A6CB2CA3176900D5E45D /* DownloadViewController.swift */,
 				5F32A6C92CA3175600D5E45D /* ComingSoonViewController.swift */,
 				5F32A6CF2CA3178B00D5E45D /* MoreViewController.swift */,
 				5F32A6D32CA31CD700D5E45D /* MockData.swift */,
+				5F5D65A52CA99C2F00B92E82 /* SearchMockData.swift */,
 				5FFC0DF72CA57D32003A0099 /* CustomCell.swift */,
 			);
 			path = 3rd_hw_DoHyeonhak;
@@ -168,13 +177,16 @@
 				5FFC0DFC2CA5D186003A0099 /* HomeTableViewController.swift in Sources */,
 				5F32A6D02CA3178B00D5E45D /* MoreViewController.swift in Sources */,
 				5F32A6C82CA3172D00D5E45D /* SearchViewController.swift in Sources */,
+				5F5D65A62CA99C3500B92E82 /* SearchMockData.swift in Sources */,
 				5FFC0DF82CA57D32003A0099 /* CustomCell.swift in Sources */,
 				5F32A6C62CA30BEE00D5E45D /* FirstViewController.swift in Sources */,
 				5F32A6B22CA2E88C00D5E45D /* ViewController.swift in Sources */,
 				5F32A6AE2CA2E88C00D5E45D /* AppDelegate.swift in Sources */,
 				5F32A6B02CA2E88C00D5E45D /* SceneDelegate.swift in Sources */,
+				5F5D65A82CA9AFA900B92E82 /* SearchBarTableViewCell.swift in Sources */,
 				5F32A6CC2CA3176900D5E45D /* DownloadViewController.swift in Sources */,
 				5F32A6D42CA31CD700D5E45D /* MockData.swift in Sources */,
+				5F5D65A42CA99BF900B92E82 /* SearchCustomCell.swift in Sources */,
 				5F32A6CA2CA3175600D5E45D /* ComingSoonViewController.swift in Sources */,
 				5FFC0DFA2CA5B133003A0099 /* CollectionViewController.swift in Sources */,
 			);
