@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - 1. DownloadViewController class 생성
 class DownloadViewController: UIViewController{
     
     let tableView: UITableView = {
@@ -41,7 +42,9 @@ class DownloadViewController: UIViewController{
     }
 }
 
+// MARK: - 2. extension 생성
 extension DownloadViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -60,8 +63,8 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return 300
     }
     
@@ -74,5 +77,4 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource{
         headerView.backgroundColor = .clear
         return headerView
     }
-
 }

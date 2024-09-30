@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - 1. tableView class 생성
 class SearchViewController: UIViewController{
     
     let tableView: UITableView = {
@@ -35,7 +36,6 @@ class SearchViewController: UIViewController{
     }
     
     func setConstraint(){
-        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -112,7 +112,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             ])
             return headerView
         }
-        return nil
+        return nil  // 이거 안하면 출력에 오류가 생김
     }
 }
 

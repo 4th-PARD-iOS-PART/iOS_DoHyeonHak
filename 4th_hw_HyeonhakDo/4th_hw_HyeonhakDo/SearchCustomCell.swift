@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - 1. SearchCustomCell class 생성
 class SearchCustomCell: UITableViewCell {
     let image = UIImageView()
     let label = UILabel()
@@ -18,6 +19,7 @@ class SearchCustomCell: UITableViewCell {
     
     override func layoutSubviews() {
         // 테이블 뷰 셀 사이의 간격
+        // reference 참고
         super.layoutSubviews()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0))
     }
@@ -30,8 +32,8 @@ class SearchCustomCell: UITableViewCell {
         contentView.addSubview(button)
         
         backgroundColor = .clear
-        
         label.textColor = .white
+        
         setButton()
         setConstraint()
     }
@@ -56,11 +58,11 @@ class SearchCustomCell: UITableViewCell {
             button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 360),
         ])
     }
+    
     func configure(with title: String, imageName: String){
         label.text = title
         image.image = UIImage(named: imageName)
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-        
     }
 }

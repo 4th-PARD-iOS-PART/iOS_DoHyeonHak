@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - 1. DownloadTableViewCell class 생성
 class DownloadTableViewCell: UITableViewCell {
     
     let DownloadImageView: UIImageView = {
@@ -17,7 +18,6 @@ class DownloadTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    
     let contentLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
@@ -25,6 +25,8 @@ class DownloadTableViewCell: UITableViewCell {
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 20)
         
+        // 줄 바꿈 reference 참고
+        // byWordWrapping은 줄바꿈을 할 때 word 단위로 끊는다. 다시 말해 word를 자르지 않고 그대로 유지해준다.
         label.textAlignment = .center
         label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
@@ -79,7 +81,7 @@ class DownloadTableViewCell: UITableViewCell {
             
             FinderButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 530),
             FinderButton.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 50),
-            FinderButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -50), // 오른쪽 여백 추가
+            FinderButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -50),
             FinderButton.widthAnchor.constraint(equalToConstant: 300),
             FinderButton.heightAnchor.constraint(equalToConstant: 40),
         ])

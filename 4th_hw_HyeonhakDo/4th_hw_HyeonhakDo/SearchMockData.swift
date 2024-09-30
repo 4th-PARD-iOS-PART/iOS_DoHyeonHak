@@ -21,5 +21,5 @@ extension SearchMockData{
             MockData(title: "Ozark", image: "movie-5"),
             MockData(title: "The Governor", image: "movie-6"),
             MockData(title: "Your Excellency", image: "movie-7"),
-        ]
+    ]
 }
