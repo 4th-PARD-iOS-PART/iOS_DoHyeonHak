@@ -19,8 +19,8 @@ class ViewController: UITabBarController {
         
         let vc1 = UINavigationController(rootViewController: FirstViewController())
         let vc2 = UINavigationController(rootViewController: SearchViewController())
-        let vc3 = UINavigationController(rootViewController: DownloadViewController())
-        let vc4 = UINavigationController(rootViewController: ComingSoonViewController())
+        let vc3 = UINavigationController(rootViewController: ComingSoonViewController())
+        let vc4 = UINavigationController(rootViewController: DownloadViewController())
         let vc5 = UINavigationController(rootViewController: MoreViewController())
         
         
