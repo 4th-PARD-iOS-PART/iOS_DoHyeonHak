@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+// MARK: - 1. tableView class 생성
 class HomeTableViewController: UITableViewCell {
 
     let logoImageView: UIImageView = {
