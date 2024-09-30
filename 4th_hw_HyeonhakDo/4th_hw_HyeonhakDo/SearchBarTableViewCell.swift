@@ -22,34 +22,51 @@ class SearchBarTableViewCell: UITableViewCell{
         contentView.addSubview(label)
         contentView.addSubview(secondImage)
         
-        backgroundColor = .darkGray
-        label.textColor = .gray
+        backgroundColor = .clear
+        contentView.backgroundColor = .darkGray
+        contentView.layer.cornerRadius = 10
+        contentView.layer.masksToBounds = true
+        label.textColor = .lightGray
         
         setConstraint()
     }
     
     func setConstraint(){
+        
         firstImage.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         secondImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27),
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 160),
+            firstImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            firstImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             
-            firstImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            firstImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
             
-            secondImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
-            secondImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 360),
+            secondImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            secondImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 340),
         ])
     }
+    
     func configure(){
         label.text = "Search for a show, movie, genre, e.t.c."
         firstImage.image = UIImage(named: "lense")
         secondImage.image = UIImage(named: "mic")
-        
     }
     
+    // reference : https://velog.io/@f-exuan21/TableView-에서-cell-의-너비-수정하기
+    override var frame: CGRect {
+        get{
+            return super.frame
+        }
+        set {
+            var frame = newValue
+            frame.origin.x += 10
+            frame.size.width -= 2 * 10
+            super.frame = frame
+        }
+    }
     
+        
 }

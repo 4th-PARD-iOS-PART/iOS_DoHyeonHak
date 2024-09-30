@@ -9,8 +9,18 @@ import UIKit
 
 class SearchViewController: UIViewController{
     
+    let tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .grouped)
+        table.backgroundColor = .clear
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return table
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false) // 네비게이션바 숨기기
+        
         view.addSubview(tableView)
         
         tableView.dataSource = self
@@ -20,22 +30,20 @@ class SearchViewController: UIViewController{
         
         tableView.register(SearchBarTableViewCell.self, forCellReuseIdentifier: "SearchBarCell")
         tableView.register(SearchCustomCell.self, forCellReuseIdentifier: "SearchCell")
+        
+        setConstraint()
+    }
     
+    func setConstraint(){
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
     }
-    
-    let tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .grouped)
-        table.backgroundColor = .clear
-        table.translatesAutoresizingMaskIntoConstraints = false
-        return table
-    }()
+
 }
 
 // MARK: - 2. tableView extension 생성
@@ -72,11 +80,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 50
+        }
         return 82
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
+        if section == 0 {
+            return 0
+        }
+        return 50
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
