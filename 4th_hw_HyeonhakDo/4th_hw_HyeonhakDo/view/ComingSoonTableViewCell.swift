@@ -119,7 +119,7 @@ class ComingSoonTableViewCell: UITableViewCell {
         self.title.font = .systemFont(ofSize: 20, weight: .bold)
         
         self.explanationLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quam dui, vivamus bibendum ut. A morbi mi tortor ut felis non accumsan accumsan quis. Massa, id ut ipsum aliquam  enim non posuere pulvinar diam."
-        self.underTagLabel.text = "Steamy • Soapy • Slow Burn •. Suspenseful •. Teen • Mystery"
+        self.underTagLabel.text = "Steamy • Soapy • Slow Burn • Suspenseful • Teen • Mystery"
     
         self.explanationLabel.textColor = .white
         self.explanationLabel.numberOfLines = 0
