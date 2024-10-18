@@ -20,35 +20,58 @@ class ListTableCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "ListCell")
-        contentView.backgroundColor = .darkGray
+        contentView.backgroundColor = .clear
         contentView.addSubview(label)
         contentView.addSubview(image)
+        contentView.addSubview(explanationLabel)
+        contentView.addSubview(timeLabel)
         
         backgroundColor = .clear
-        label.textColor = .white
+        
         setConstraint()
     }
     
     func setConstraint(){
-        label.translatesAutoresizingMaskIntoConstraints = false
         image.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        explanationLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 160),
             
-            image.topAnchor.constraint(equalTo: contentView.topAnchor),
-            image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            image.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10),
+            image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            
+            explanationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 90),
+            explanationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            explanationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
+            
+            timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
+            timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 160),
+            
         ])
     }
     
     func configure(with title: String, imageName: String){
         label.text = "0. Episode"
-        timeLabel.text = "37min"
-        explanationLabel.text = "Flying high: Chrishell reveals her latest love - Jason. In LA, the agents get real about the relationship while Christine readies her return."
+        label.textColor = .white
+        
         image.image = UIImage(named: imageName)
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
+        
+        explanationLabel.text = "Flying high: Chrishell reveals her latest love - Jason. In LA, the agents get real about the relationship while Christine readies her return."
+        explanationLabel.textColor = .white
+        explanationLabel.numberOfLines = 0
+        explanationLabel.font = .systemFont(ofSize: 15)
+        explanationLabel.lineBreakMode = .byWordWrapping
+        
+        timeLabel.text = "37min"
+        timeLabel.textColor = .lightGray
+        timeLabel.font = .systemFont(ofSize: 15)
+        
     }
     
 }
