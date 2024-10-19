@@ -33,6 +33,7 @@ class ListViewController: UIViewController {
         tableView.delegate = self
         
         tableView.register(ListTableCell.self, forCellReuseIdentifier: "ListCell")
+        tableView.register(ListTableViewCell.self, forCellReuseIdentifier: "ListCell2")
         
         
         if let item = selectedItem {
@@ -57,23 +58,35 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
         return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListTableCell else {
-                return UITableViewCell()
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell2", for: indexPath) as? ListTableCell else {
+                    return UITableViewCell()
+            }
+            return cell
+        }else{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListTableCell else {
+                    return UITableViewCell()
+            }
+            cell.configure(with: dataTitle, imageName: dataImage)
+            return cell
         }
-        cell.configure(with: dataTitle, imageName: dataImage)
-        return cell
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 300
+        }
         return 150
     }
     
