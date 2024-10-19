@@ -39,7 +39,7 @@ class ListTableCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 160),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 165),
             
             image.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -49,13 +49,14 @@ class ListTableCell: UITableViewCell {
             explanationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
             
             timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
-            timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 160),
+            timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 165),
             
         ])
     }
     
     func configure(with title: String, imageName: String){
         label.text = "0. Episode"
+        label.font = .systemFont(ofSize: 15)
         label.textColor = .white
         
         image.image = UIImage(named: imageName)
@@ -65,12 +66,12 @@ class ListTableCell: UITableViewCell {
         explanationLabel.text = "Flying high: Chrishell reveals her latest love - Jason. In LA, the agents get real about the relationship while Christine readies her return."
         explanationLabel.textColor = .white
         explanationLabel.numberOfLines = 0
-        explanationLabel.font = .systemFont(ofSize: 15)
+        explanationLabel.font = .systemFont(ofSize: 13)
         explanationLabel.lineBreakMode = .byWordWrapping
         
         timeLabel.text = "37min"
         timeLabel.textColor = .lightGray
-        timeLabel.font = .systemFont(ofSize: 15)
+        timeLabel.font = .systemFont(ofSize: 13)
         
     }
     
