@@ -40,6 +40,42 @@ class ListTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    let ADImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "AD"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
+        return imageView
+    }()
+    
+    let visionImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "vision"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
+        return imageView
+    }()
+    
+    let HDImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "HD"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
+        return imageView
+    }()
+    
+    let ratingImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "rating"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
+        return imageView
+    }()
+    
+    let yearLabel: UILabel = {
+        let label = UILabel()
+        label.text = "2022"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        return label
+    }()
+    
     let playButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
         
@@ -153,16 +189,6 @@ class ListTableViewCell: UITableViewCell {
         return button
     }()
     
-    // stackView
-    let labelStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 10
-        return stackView
-    }()
-    
     let episodeLabel: UILabel = {
         let label = UILabel()
         label.text = "Episodes"
@@ -203,6 +229,14 @@ class ListTableViewCell: UITableViewCell {
         return label
     }()
     
+    let seasonLabel2: UILabel = {
+        let label = UILabel()
+        label.text = "Season 5"
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 15)
+        return label
+    }()
+    
     let chevronImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "chevron"))
         imageView.contentMode = .scaleAspectFit
@@ -210,17 +244,31 @@ class ListTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    let labelStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 10
+        return stackView
+    }()
+    
+    let labelImageStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 5
+        return stackView
+    }()
+    
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: "ListCell2")
-        
-        
         backgroundColor = .black
         contentView.backgroundColor = .black
-        
         setup()
         setConstraint()
-    
-    
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -241,6 +289,13 @@ class ListTableViewCell: UITableViewCell {
         contentView.addSubview(contentLabel)
         
         contentView.addSubview(redBarImage)
+        
+        contentView.addSubview(yearLabel)
+        contentView.addSubview(visionImage)
+        contentView.addSubview(ratingImage)
+        contentView.addSubview(ADImage)
+        contentView.addSubview(HDImage)
+        contentView.addSubview(seasonLabel2)
         
         // StackView에 레이블들 추가
         labelStackView.addArrangedSubview(episodeLabel)
@@ -274,6 +329,13 @@ class ListTableViewCell: UITableViewCell {
         
         labelStackView.translatesAutoresizingMaskIntoConstraints = false
         
+        yearLabel.translatesAutoresizingMaskIntoConstraints = false
+        seasonLabel2.translatesAutoresizingMaskIntoConstraints = false
+        visionImage.translatesAutoresizingMaskIntoConstraints = false
+        ratingImage.translatesAutoresizingMaskIntoConstraints = false
+        HDImage.translatesAutoresizingMaskIntoConstraints = false
+        ADImage.translatesAutoresizingMaskIntoConstraints = false
+        
         seasonLabel.translatesAutoresizingMaskIntoConstraints = false
         chevronImage.translatesAutoresizingMaskIntoConstraints = false
         
@@ -294,18 +356,17 @@ class ListTableViewCell: UITableViewCell {
             seriesImage.widthAnchor.constraint(equalToConstant: 60),
             seriesImage.heightAnchor.constraint(equalToConstant: 20),
             
-            playButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 260),
+            playButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 265),
             playButton.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             playButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
             
-            downloadButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 305),
+            downloadButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 310),
             downloadButton.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             downloadButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 220),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
             
             subtitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 355),
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -314,7 +375,6 @@ class ListTableViewCell: UITableViewCell {
             contentLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 375),
             contentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             contentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
             
             MyListButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 440),
             MyListButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -342,6 +402,19 @@ class ListTableViewCell: UITableViewCell {
             chevronImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 580),
             chevronImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 80),
             
+            yearLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 245),
+            yearLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            ratingImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 247),
+            ratingImage.leadingAnchor.constraint(equalTo: yearLabel.trailingAnchor, constant: 10 ),
+            seasonLabel2.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 245),
+            seasonLabel2.leadingAnchor.constraint(equalTo: ratingImage.trailingAnchor, constant: 10 ),
+            visionImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 247),
+            visionImage.leadingAnchor.constraint(equalTo: seasonLabel2.trailingAnchor, constant: 10 ),
+            HDImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 247),
+            HDImage.leadingAnchor.constraint(equalTo: visionImage.trailingAnchor, constant: 10 ),
+            ADImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 247),
+            ADImage.leadingAnchor.constraint(equalTo: HDImage.trailingAnchor, constant: 10 ),
+                    
         ])
         }
     
