@@ -10,6 +10,7 @@ import UIKit
 class ListTableCell: UITableViewCell {
     
     let image = UIImageView()
+    let playimage = UIImageView()
     let label = UILabel()
     let timeLabel = UILabel()
     let explanationLabel = UILabel()
@@ -23,6 +24,7 @@ class ListTableCell: UITableViewCell {
         contentView.backgroundColor = .clear
         contentView.addSubview(label)
         contentView.addSubview(image)
+        contentView.addSubview(playimage)
         contentView.addSubview(explanationLabel)
         contentView.addSubview(timeLabel)
         
@@ -33,6 +35,7 @@ class ListTableCell: UITableViewCell {
     
     func setConstraint(){
         image.translatesAutoresizingMaskIntoConstraints = false
+        playimage.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         explanationLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +46,10 @@ class ListTableCell: UITableViewCell {
             
             image.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            
+            playimage.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 30),
+            playimage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 60),
+            
             
             explanationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 90),
             explanationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -62,6 +69,10 @@ class ListTableCell: UITableViewCell {
         image.image = UIImage(named: imageName)
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
+        
+        playimage.image = UIImage(named: "play2")
+        playimage.contentMode = .scaleAspectFill
+        playimage.clipsToBounds = true
         
         explanationLabel.text = "Flying high: Chrishell reveals her latest love - Jason. In LA, the agents get real about the relationship while Christine readies her return."
         explanationLabel.textColor = .white
