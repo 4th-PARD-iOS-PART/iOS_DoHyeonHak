@@ -323,6 +323,8 @@ class ListTableViewCell: UITableViewCell {
         
         contentView.addSubview(seasonLabel)
         contentView.addSubview(chevronImage)
+        
+        XButton.addTarget(self, action: #selector(XButtonTapped), for: .touchUpInside)
     }
     
     func setConstraint(){
@@ -366,9 +368,9 @@ class ListTableViewCell: UITableViewCell {
             mirroringButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -30),
             mirroringButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
             
-            XButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -30),
-            XButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
+            XButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+            XButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
+
             logoImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 170),
             logoImage.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: -5),
             logoImage.widthAnchor.constraint(equalToConstant: 25),

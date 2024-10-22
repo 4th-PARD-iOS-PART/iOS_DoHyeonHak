@@ -127,6 +127,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let modal = ListViewController()
         modal.selectedItem = item
         let navController = UINavigationController(rootViewController: modal)
+        modal.modalPresentationStyle = .fullScreen // 모달을 fullscreen으로 설정
         self.present(navController, animated: true, completion: nil)
     }
     
