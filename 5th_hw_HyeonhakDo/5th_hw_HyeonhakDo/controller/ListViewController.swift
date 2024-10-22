@@ -27,6 +27,8 @@ class ListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(closeModal), name: NSNotification.Name("CloseModalNotification"), object: nil)
         
         navigationController?.setNavigationBarHidden(true, animated: false) // 네비게이션바 숨기기
+//        navigationController?.isNavigationBarHidden = true
+        
         
         view.backgroundColor = .black
         view.addSubview(tableView)

@@ -365,11 +365,11 @@ class ListTableViewCell: UITableViewCell {
             previewImage.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
             previewImage.heightAnchor.constraint(equalToConstant: 200),
             
-            mirroringButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -30),
-            mirroringButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            mirroringButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -25),
+            mirroringButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -45),
             
-            XButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
-            XButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
+            XButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: -25),
+            XButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -5),
 
             logoImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 170),
             logoImage.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: -5),
