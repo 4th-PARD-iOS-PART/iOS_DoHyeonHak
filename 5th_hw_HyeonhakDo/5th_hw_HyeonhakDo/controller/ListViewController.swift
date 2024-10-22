@@ -24,6 +24,8 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(closeModal), name: NSNotification.Name("CloseModalNotification"), object: nil)
+        
         navigationController?.setNavigationBarHidden(true, animated: false) // 네비게이션바 숨기기
         
         view.backgroundColor = .black
@@ -51,6 +53,14 @@ class ListViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+    @objc func closeModal() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 
@@ -65,9 +75,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell2", for: indexPath) as? ListTableCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell2", for: indexPath) as? ListTableViewCell else {
                     return UITableViewCell()
             }
+            cell.configure(with: dataTitle, imageName: dataImage)
             return cell
         }else{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListTableCell else {
@@ -84,7 +95,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 570
+            return 540
         }
         return 150
     }

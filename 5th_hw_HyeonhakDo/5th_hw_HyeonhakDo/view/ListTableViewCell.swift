@@ -11,12 +11,30 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
-    let previewImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "previewimage"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .clear
-        return imageView
+    let previewImage = UIImageView()
+    
+    let mirroringButton: UIButton = {
+        var configuration = UIButton.Configuration.filled()
+        
+        configuration.image = UIImage(named: "mirror")
+        configuration.background.backgroundColor = .clear
+        configuration.baseForegroundColor = .gray
+        let button = UIButton(configuration: configuration)
+        
+        return button
     }()
+    
+    let XButton: UIButton = {
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(named: "x")
+        configuration.background.backgroundColor = .clear
+        configuration.baseForegroundColor = .gray
+        
+        let button = UIButton(configuration: configuration)
+        
+        return button
+    }()
+    
     
     let logoImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "logo"))
@@ -112,13 +130,7 @@ class ListTableViewCell: UITableViewCell {
         return button
     }()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Selling Sunsets"
-        label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        return label
-    }()
+    let titleLabel = UILabel()
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
@@ -279,6 +291,8 @@ class ListTableViewCell: UITableViewCell {
         contentView.addSubview(previewImage)
         contentView.addSubview(logoImage)
         contentView.addSubview(seriesImage)
+        contentView.addSubview(mirroringButton)
+        contentView.addSubview(XButton)
         
         contentView.addSubview(playButton)
         contentView.addSubview(downloadButton)
@@ -315,6 +329,8 @@ class ListTableViewCell: UITableViewCell {
         previewImage.translatesAutoresizingMaskIntoConstraints = false
         logoImage.translatesAutoresizingMaskIntoConstraints = false
         seriesImage.translatesAutoresizingMaskIntoConstraints = false
+        mirroringButton.translatesAutoresizingMaskIntoConstraints = false
+        XButton.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -342,52 +358,57 @@ class ListTableViewCell: UITableViewCell {
         chevronImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            previewImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -170),
+            previewImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -35),
             previewImage.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             previewImage.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
-            previewImage.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            previewImage.heightAnchor.constraint(equalToConstant: 500),
+            previewImage.heightAnchor.constraint(equalToConstant: 200),
             
-            logoImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 200),
+            mirroringButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -30),
+            mirroringButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            
+            XButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -30),
+            XButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
+            logoImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 170),
             logoImage.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: -5),
             logoImage.widthAnchor.constraint(equalToConstant: 25),
             logoImage.heightAnchor.constraint(equalToConstant: 25),
             
-            seriesImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 202),
+            seriesImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 172),
             seriesImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             seriesImage.widthAnchor.constraint(equalToConstant: 60),
             seriesImage.heightAnchor.constraint(equalToConstant: 20),
             
-            playButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 265),
+            playButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 235),
             playButton.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             playButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
             
-            downloadButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 310),
+            downloadButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 280),
             downloadButton.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             downloadButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 220),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 190),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            subtitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 355),
+            subtitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 325),
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            contentLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 375),
+            contentLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 345),
             contentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             contentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            MyListButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 440),
+            MyListButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 410),
             MyListButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             
-            rateButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 445),
+            rateButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 415),
             rateButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 120),
             
-            shareButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 445),
+            shareButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 415),
             shareButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 210),
             
-            redBarImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 515),
+            redBarImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 485),
             redBarImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             redBarImage.widthAnchor.constraint(equalToConstant: 80),
             redBarImage.heightAnchor.constraint(equalToConstant: 4),
@@ -397,27 +418,45 @@ class ListTableViewCell: UITableViewCell {
             labelStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             labelStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
                         
-            seasonLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 580),
+            seasonLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 550),
             seasonLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10),
             seasonLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            chevronImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 580),
+            chevronImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 550),
             chevronImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 80),
             
-            yearLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 245),
+            yearLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 215),
             yearLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            ratingImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 247),
+            ratingImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 217),
             ratingImage.leadingAnchor.constraint(equalTo: yearLabel.trailingAnchor, constant: 10 ),
-            seasonLabel2.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 245),
+            seasonLabel2.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 215),
             seasonLabel2.leadingAnchor.constraint(equalTo: ratingImage.trailingAnchor, constant: 10 ),
-            visionImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 247),
+            visionImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 217),
             visionImage.leadingAnchor.constraint(equalTo: seasonLabel2.trailingAnchor, constant: 10 ),
-            HDImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 247),
+            HDImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 217),
             HDImage.leadingAnchor.constraint(equalTo: visionImage.trailingAnchor, constant: 10 ),
-            ADImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 247),
+            ADImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 217),
             ADImage.leadingAnchor.constraint(equalTo: HDImage.trailingAnchor, constant: 10 ),
                     
         ])
         }
     
+    func configure(with title: String, imageName: String){
+        titleLabel.text = title
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        previewImage.image = UIImage(named: imageName)
+        previewImage.contentMode = .scaleAspectFill
+        previewImage.backgroundColor = .clear
+        previewImage.clipsToBounds = true
+    }
+}
+
+//MARK: -  모달창 닫기
+extension ListTableViewCell {
+    @objc func XButtonTapped(){
+        print("XButton tapped")
+        NotificationCenter.default.post(name: NSNotification.Name("CloseModalNotification"), object: nil)
+    }
 }
