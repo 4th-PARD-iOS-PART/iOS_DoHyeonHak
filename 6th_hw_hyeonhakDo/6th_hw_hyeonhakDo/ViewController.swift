@@ -43,6 +43,8 @@ class ViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        
         setConstraint()
     }
     func setConstraint(){
@@ -63,8 +65,14 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
+    @objc func addButtonTapped(){
+        let addVC = AddViewController()
+        let navigationController = UINavigationController(rootViewController: addVC)
+        self.present(navigationController, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return members.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
