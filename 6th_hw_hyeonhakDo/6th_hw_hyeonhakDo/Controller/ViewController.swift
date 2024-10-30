@@ -37,7 +37,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         view.addSubview(tableView)
         view.addSubview(titleLabel)
@@ -45,28 +44,34 @@ class ViewController: UIViewController {
         
         addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         setConstraint()
     }
+    
     func setConstraint(){
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 100),
-            tableView.widthAnchor.constraint(equalToConstant: view.frame.width),
-            tableView.heightAnchor.constraint(equalToConstant: view.frame.height),
-            
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
-            addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            // tableView 자체 layout 설정: bottomAnchor 설정 안하면 UI 출력이 안되니 설정할 것
+            tableView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 100),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    
     @objc func addButtonTapped(){
         let addVC = AddViewController()
+        addVC.delegate = self   //  AddViewController에서 데이터를 받아오기 위한 delegate
         let navigationController = UINavigationController(rootViewController: addVC)
         self.present(navigationController, animated: true, completion: nil)
     }
@@ -83,6 +88,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
+//        selectedIndex = indexPath.row
+        let member = members[indexPath.row]
+        let detailVC = DetailDataViewController()
+        detailVC.member = member
+        present(detailVC, animated: true)
+    }
+}
+
+extension ViewController: AddViewControllerDelegate {
+    func MemberDidSubmit(_ member: MemberData) {
+        if let existingIndex = members.firstIndex(where: { $0.name == member.name }) {
+            members[existingIndex] = member
+        } else {
+            members.append(member)
+        }
+        tableView.reloadData()  // 데이터 받아오기
     }
 }
