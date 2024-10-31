@@ -3,17 +3,17 @@
 
 ## HW6
 
-<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/6th_hw_HyeonhakDo/img/hw6-1.png">
+<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/975496196cd327a5028c9559bc8a68e6c53bf23e/6th_hw_hyeonhakDo/img/hw6-1.png">
 
-<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/6th_hw_HyeonhakDo/img/hw6-2.png">
+<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/975496196cd327a5028c9559bc8a68e6c53bf23e/6th_hw_hyeonhakDo/img/hw6-2.png">
 
-<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/6th_hw_HyeonhakDo/img/hw6-3.png">
+<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/975496196cd327a5028c9559bc8a68e6c53bf23e/6th_hw_hyeonhakDo/img/hw6-3.png">
 
-<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/6th_hw_HyeonhakDo/img/hw6-4.png">
+<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/975496196cd327a5028c9559bc8a68e6c53bf23e/6th_hw_hyeonhakDo/img/hw6-4.png">
 
-<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/6th_hw_HyeonhakDo/img/hw6-5.png">
+<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/975496196cd327a5028c9559bc8a68e6c53bf23e/6th_hw_hyeonhakDo/img/hw6-5.png">
 
-<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/main/6th_hw_HyeonhakDo/img/hw6-6.png">
+<img src = "https://github.com/4th-PARD-iOS-PART/iOS_DoHyeonHak/blob/975496196cd327a5028c9559bc8a68e6c53bf23e/6th_hw_hyeonhakDo/img/hw6-6.png">
 
 
 - hw6 과제에 대한 결과입니다.
