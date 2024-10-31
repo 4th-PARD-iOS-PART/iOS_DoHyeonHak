@@ -21,6 +21,7 @@
 			</array>
 		</dict>
 	</dict>
+    
     <key>NSAppTransportSecurity</key>
             <dict>
                 <key>NSExceptionDomains</key>
@@ -34,5 +35,7 @@
                     </dict>
                 </dict>
             </dict>
+    
+    
 </dict>
 </plist>

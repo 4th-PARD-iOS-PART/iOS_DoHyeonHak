@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F44C4404-C044-49D4-93A2-F921F0B6704F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "6th_hw_HyeonhakDo/Controller/ViewController.swift"
@@ -18,78 +18,22 @@
             endingLineNumber = "10"
             landmarkName = "ViewController"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "F44C4404-C044-49D4-93A2-F921F0B6704F - b9c239f908bd0be2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_th_hw_HyeonhakDo.ViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; _th_hw_HyeonhakDo.ViewController"
-                  moduleName = "6th_hw_HyeonhakDo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hyeonhakdo/Desktop/iOS_DoHyeonHak/6th_hw_HyeonhakDo/6th_hw_HyeonhakDo/Controller/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0">
-               </Location>
-               <Location
-                  uuid = "F44C4404-C044-49D4-93A2-F921F0B6704F - 73ff8117e56631b4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_th_hw_HyeonhakDo.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; _th_hw_HyeonhakDo.ViewController"
-                  moduleName = "6th_hw_HyeonhakDo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hyeonhakdo/Desktop/iOS_DoHyeonHak/6th_hw_HyeonhakDo/6th_hw_HyeonhakDo/Controller/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11">
-               </Location>
-               <Location
-                  uuid = "F44C4404-C044-49D4-93A2-F921F0B6704F - 9fb0058dfef64556"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_th_hw_HyeonhakDo.ViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;_th_hw_HyeonhakDo.ViewController&gt;"
-                  moduleName = "6th_hw_HyeonhakDo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hyeonhakdo/Desktop/iOS_DoHyeonHak/6th_hw_HyeonhakDo/6th_hw_HyeonhakDo/Controller/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0">
-               </Location>
-               <Location
-                  uuid = "F44C4404-C044-49D4-93A2-F921F0B6704F - c748c0ffe689d5ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_th_hw_HyeonhakDo.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;_th_hw_HyeonhakDo.ViewController&gt;"
-                  moduleName = "6th_hw_HyeonhakDo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hyeonhakdo/Desktop/iOS_DoHyeonHak/6th_hw_HyeonhakDo/6th_hw_HyeonhakDo/Controller/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11">
-               </Location>
-               <Location
-                  uuid = "F44C4404-C044-49D4-93A2-F921F0B6704F - cb1b430adc9bd7df"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_th_hw_HyeonhakDo.ViewController.__deallocating_deinit"
-                  moduleName = "6th_hw_HyeonhakDo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hyeonhakdo/Desktop/iOS_DoHyeonHak/6th_hw_HyeonhakDo/6th_hw_HyeonhakDo/Controller/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B980F3C0-D6E3-410A-A41E-B40C76185DC0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "6th_hw_HyeonhakDo/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "getAllData()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -38,19 +38,40 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(tableView)
-        view.addSubview(titleLabel)
-        view.addSubview(addButton)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemberAddedNotification), name: .memberAdded, object: nil)
         
-        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        getAllData()
         
         tableView.dataSource = self
         tableView.delegate = self
         
+        view.addSubview(tableView)
+        view.addSubview(titleLabel)
+        view.addSubview(addButton)
+        
         setConstraint()
         
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
     }
     
+    func getAllData(){
+        let APIService = APIService()
+
+        APIService.getRequest(mode: "all") { [weak self] (result: Result<[MemberData], Error>) in
+            switch result {
+            case .success(let members):
+                DispatchQueue.main.async {
+                    self?.members = members
+                    self?.tableView.reloadData()
+                }
+                print("Success")
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    print("Failed to get all data")
+                }
+            }
+        }
+    }
     
     func setConstraint(){
         NSLayoutConstraint.activate([
@@ -60,7 +81,6 @@ class ViewController: UIViewController {
             addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            // tableView 자체 layout 설정: bottomAnchor 설정 안하면 UI 출력이 안되니 설정할 것
             tableView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 100),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -68,12 +88,19 @@ class ViewController: UIViewController {
         ])
     }
     
+    // for data passing after POST
+    @objc func MemberAddedNotification() {
+        getAllData()
+    }
+        
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .memberAdded, object: nil)
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     @objc func addButtonTapped(){
         let addVC = AddViewController()
-        addVC.delegate = self   //  AddViewController에서 데이터를 받아오기 위한 delegate
         let navigationController = UINavigationController(rootViewController: addVC)
         self.present(navigationController, animated: true, completion: nil)
     }
@@ -90,21 +117,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectedIndex = indexPath.row
         let member = members[indexPath.row]
         let detailVC = DetailDataViewController()
         detailVC.member = member
         present(detailVC, animated: true)
-    }
-}
-
-extension ViewController: AddViewControllerDelegate {
-    func MemberDidSubmit(_ member: MemberData) {
-        if let existingIndex = members.firstIndex(where: { $0.name == member.name }) {
-            members[existingIndex] = member
-        } else {
-            members.append(member)
-        }
-        tableView.reloadData()  // 데이터 받아오기
     }
 }

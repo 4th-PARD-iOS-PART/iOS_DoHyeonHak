@@ -8,7 +8,8 @@
 import Foundation
 
 struct MemberData: Codable {
-    let name: String
-    let age: String
-    let part: String
+    var id : Int?
+    var name : String
+    var part : String
+    var age : Int
 }

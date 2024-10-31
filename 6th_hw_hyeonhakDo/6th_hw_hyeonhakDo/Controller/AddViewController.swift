@@ -9,7 +9,6 @@ import UIKit
 
 class AddViewController: UIViewController {
     var members: MemberData?
-    weak var delegate: AddViewControllerDelegate?
     
     var submitButton: UIButton = {
         let button = UIButton()
@@ -39,7 +38,7 @@ class AddViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        submitButton.addTarget(self, action: #selector(submitMemberAndDismiss), for: .touchUpInside)
+        submitButton.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
         
         view.addSubview(submitButton)
         
@@ -77,28 +76,31 @@ class AddViewController: UIViewController {
                 
     }
     
-    // protocol & delegate pattern 사용
-    @objc func submitMemberAndDismiss() {
-        let member = buildMemberForm()
-        // 이를 통해 MemberDidSubmit에 member를 parameter로 보내고, 정보 저장이 이루어진다.
-        delegate?.MemberDidSubmit(member)
-        dismiss(animated: true) // close modal
-    }
-//    
-//    @objc func dismissViewController() {
-//        self.dismiss(animated: true)
-//    }
-//    
-//    deinit {
-//            NotificationCenter.default.removeObserver(self)
-//    }
+
     
-    // 데이터 추가를 위한 기본 form building
-    func buildMemberForm() -> MemberData {
-        MemberData(
-            name: nameTextField.text ?? "",
-            age: ageTextField.text ?? "",
-            part: partTextField.text ?? ""
-        )
+    @objc func pressButton() {
+        guard let name = nameTextField.text, let part = partTextField.text, let ageStr = ageTextField.text, let age = Int(ageStr)
+        else { return }
+          
+        let user = MemberData(name: name, part: part, age: age)
+
+        print("Generated Member Data: \(user)")
+        let APIService = APIService()
+        APIService.postRequest(mode: "POST", body: user) { (result: Result<MemberData, Error>) in
+            DispatchQueue.main.async {
+                switch result {
+                    case .success:
+                        print("Success Adding")
+                        NotificationCenter.default.post(name: .memberAdded, object: nil)    // data passing
+                        self.dismiss(animated: true)
+                    case .failure(let error):
+                        print("Failed to add member: \(error.localizedDescription)")
+                }
+            }
+        }
     }
+}
+
+extension Notification.Name {   // for data passing
+    static let memberAdded = Notification.Name("Added")
 }
