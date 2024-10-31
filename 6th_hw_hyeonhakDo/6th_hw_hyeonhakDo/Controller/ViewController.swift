@@ -48,7 +48,9 @@ class ViewController: UIViewController {
         tableView.delegate = self
         
         setConstraint()
+        
     }
+    
     
     func setConstraint(){
         NSLayoutConstraint.activate([

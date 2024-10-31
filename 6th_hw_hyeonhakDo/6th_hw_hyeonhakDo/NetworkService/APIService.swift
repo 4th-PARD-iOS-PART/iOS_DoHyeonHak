@@ -8,28 +8,62 @@
 import Foundation
 
 class APIService {
-    // POST Request
     
-    let baseURL = "http://ec2-13-209-3-68.ap-northeast-2.compute.amazonaws.com:8080"
-    
-    func addNewUser() {
-        guard let url = URL(string: "\(baseURL)/user") else { return }
+    // GET FUNC
+    func getRequest<T: Decodable>(mode: String = "GET", completion: @escaping (Result<T, Error>) -> Void) {
+        guard let url = NetworkManager.shared.makeURL(part: mode) else {
+            print("🧨 Invalid URL")
+            completion(.failure(NetworkError.noData))
+            return
+        }
         
-        let newUser = User(id: nil, name: "김현중", part: "iOS", age: 26)
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("🧨 Error: \(error.localizedDescription)")
+                completion(.failure(error))
+                return
+            }
+            
+            if let data = data {
+                do {
+                    let decodedData = try JSONDecoder().decode(T.self, from: data)
+                    completion(.success(decodedData))
+                } catch {
+                    print("🧨 Decoding error: \(error)")
+                    completion(.failure(error))
+                }
+            }
+        }.resume()
+    }
+    
+    // POST FUNC
+    func postRequest<T: Codable>(mode: String = "POST", body: T, completion: @escaping (Result<T, Error>) -> Void) {
+        guard let url = NetworkManager.shared.makeURL(part: mode) else {
+            print("🧨 Invalid URL")
+            completion(.failure(NetworkError.noData))
+            return
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        // Encoding process
         do {
-            request.httpBody = try JSONEncoder().encode(newUser)
+            request.httpBody = try JSONEncoder().encode(body)
         } catch {
-            print("Encoding error: \(error)")
+            print("🧨 Encoding error: \(error)")
+            completion(.failure(error))
             return
         }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
+                completion(.failure(error))
                 return
             }
             
@@ -38,29 +72,9 @@ class APIService {
             }
         }.resume()
     }
+}
 
-    // GET Request
-    func getAllUsers(part: String = "all") {
-        guard let url = URL(string: "\(baseURL)/user?part=\(part)") else {
-            print("🧨 Invalid URL")
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-            
-            if let data = data {
-                do {
-                    let users = try JSONDecoder().decode([User].self, from: data)
-                    print("Users: \(users)")
-                } catch {
-                    print("Decoding error: \(error)")
-                }
-            }
-        }.resume()
-    }
-
+enum NetworkError: Error {
+    case noData
+    case decodingError(Error)
 }
