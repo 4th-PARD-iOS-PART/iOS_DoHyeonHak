@@ -81,7 +81,7 @@ class ViewController: UIViewController {
             addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            tableView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 100),
+            tableView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 50),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
