@@ -33,6 +33,9 @@ class DetailDataViewController: UIViewController {
 
         view.backgroundColor = .white
         
+        editButton.addTarget(self, action: #selector(pressEditButton), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(pressDeleteButton), for: .touchUpInside)
+        
         if let item = member {
             nameLabel.text = "\(item.name)"
             nameLabel.font = .systemFont(ofSize: 40)
@@ -75,5 +78,45 @@ class DetailDataViewController: UIViewController {
         ])
     }
 
+    // For updating data
+    @objc func pressEditButton() {
+        guard var member = member else { return }
+        // temperature for test
+        // if you want to input data for editing, use input text and assign these values to member
+        member.name = "TEST"
+        member.age = 30
+        member.part = "TEST"
+
+        let APIService = APIService()
+        APIService.patchRequest(id: member.id, body: member) { (result: Result<MemberData, Error>) in
+            DispatchQueue.main.async {
+                switch result {
+                    case .success:
+                        print("Success PATCH")
+                        NotificationCenter.default.post(name: .memberNotice, object: nil)
+                        self.dismiss(animated: true)
+                    case .failure(let error):
+                        print("Failed Edit: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+
+    // For deleting data
+    @objc func pressDeleteButton() {
+        guard let member = member else { return }
+        APIService().deleteRequest(id: member.id) { (result: Result<MemberData?, Error>) in
+            DispatchQueue.main.async {
+                switch result {
+                    case .success(let response):
+                        print("success")
+                        NotificationCenter.default.post(name: .memberNotice, object: nil)
+                        self.dismiss(animated: true)
+                    case .failure(let error):
+                        print("Failed to delete member: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
     
 }

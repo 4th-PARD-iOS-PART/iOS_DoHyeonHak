@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MemberAddedNotification), name: .memberAdded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemberNotification), name: .memberNotice, object: nil)
         
         getAllData()
         
@@ -57,12 +57,13 @@ class ViewController: UIViewController {
     func getAllData(){
         let APIService = APIService()
 
-        APIService.getRequest(mode: "all") { [weak self] (result: Result<[MemberData], Error>) in
+        APIService.getRequest() { [weak self] (result: Result<[MemberData], Error>) in
             switch result {
             case .success(let members):
                 DispatchQueue.main.async {
                     self?.members = members
                     self?.tableView.reloadData()
+                    
                 }
                 print("Success")
             case .failure(let error):
@@ -89,12 +90,12 @@ class ViewController: UIViewController {
     }
     
     // for data passing after POST
-    @objc func MemberAddedNotification() {
+    @objc func MemberNotification() {
         getAllData()
     }
         
     deinit {
-        NotificationCenter.default.removeObserver(self, name: .memberAdded, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .memberNotice, object: nil)
     }
 }
 

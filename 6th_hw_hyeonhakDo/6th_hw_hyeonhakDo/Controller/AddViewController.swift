@@ -79,8 +79,7 @@ class AddViewController: UIViewController {
                 
     }
     
-
-    
+    // for adding data
     @objc func pressButton() {
         guard let name = nameTextField.text, let part = partTextField.text, let ageStr = ageTextField.text, let age = Int(ageStr)
         else { return }
@@ -89,12 +88,12 @@ class AddViewController: UIViewController {
 
         print("Generated Member Data: \(user)")
         let APIService = APIService()
-        APIService.postRequest(mode: "POST", body: user) { (result: Result<MemberData, Error>) in
+        APIService.postRequest(body: user) { (result: Result<MemberData, Error>) in
             DispatchQueue.main.async {
                 switch result {
                     case .success:
                         print("Success Adding")
-                        NotificationCenter.default.post(name: .memberAdded, object: nil) // data passing
+                        NotificationCenter.default.post(name: .memberNotice, object: nil)
                         self.dismiss(animated: true)
                     case .failure(let error):
                         print("Failed to add member: \(error.localizedDescription)")
@@ -104,6 +103,6 @@ class AddViewController: UIViewController {
     }
 }
 
-extension Notification.Name {   // for data passing
-    static let memberAdded = Notification.Name("Added")
+extension Notification.Name {
+    static let memberNotice = Notification.Name("change")
 }
